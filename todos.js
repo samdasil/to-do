@@ -10,36 +10,19 @@ var todos = [
 
 renderTodo();
 
-console.log(buttonElement);
+buttonElement.onclick = addTodoInArray;
 
-buttonElement.onclick = addTodo;
-
-function renderTodo(){
-
-    listElement.innerHTML = '';
-
+function renderTodo(){    
+    
     for( todo of todos ){
 
-        var todoElement = document.createElement('li');
-        var labelElement = document.createElement('label');
-        var inputItemElement = document.createElement('input');
-        var pElement = document.createElement('p');
-        var spanElement = document.createElement('span');
-        var todoText = document.createTextNode(todo);
-
-        todoElement.appendChild(labelElement);
-        labelElement.appendChild(inputItemElement);
-        inputItemElement.setAttribute('type','checkbox')
-        labelElement.appendChild(pElement);
-        labelElement.appendChild(spanElement);
-        pElement.appendChild(todoText);
-        listElement.appendChild(todoElement);
+        createToDoItem(todo);
 
     }
 
 }
 
-function addTodo(){
+function addTodoInArray(){
 
     var todoText = inputElement.value;
 
@@ -47,6 +30,26 @@ function addTodo(){
 
     inputElement.value = '';
 
-    renderTodo();
+    createToDoItem(todos[todos.length -1])
 
+}
+
+function createToDoItem(objToDo){
+
+    var todoElement = document.createElement('li');
+    var labelElement = document.createElement('label');
+    var inputItemElement = document.createElement('input');
+    var pElement = document.createElement('p');
+    var spanElement = document.createElement('span');
+    var todoText = document.createTextNode(objToDo);
+
+    todoElement.appendChild(labelElement);
+    labelElement.appendChild(inputItemElement);
+    inputItemElement.setAttribute('type','checkbox')    
+    labelElement.appendChild(pElement);
+    labelElement.appendChild(spanElement);
+    pElement.appendChild(todoText);
+    listElement.appendChild(todoElement);
+
+    return listElement;
 }
