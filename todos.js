@@ -2,7 +2,7 @@ var listElement = document.querySelector('#app ul');
 var inputElement = document.querySelector('#app .addTodo input');
 var buttonElement = document.querySelector('#app .addTodo button');
 var buttonErase = document.querySelector('#erase');
-var buttonRemove = document.querySelector('#remove-selected');
+// var buttonRemove = document.querySelector('#remove-selected');
 
 const localItems = JSON.parse(localStorage.getItem('ListItems'))
 let ListItems = localStorage.getItem('ListItems') !== null ? localItems : []
@@ -23,7 +23,6 @@ inputElement.addEventListener('keyup', function(e){
 
 buttonElement.onclick = addTodoInArray;
 buttonErase.onclick = removeAll;
-buttonRemove.onclick = removeSelected;
 
 function renderTodo(){    
     
