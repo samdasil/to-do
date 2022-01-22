@@ -13,6 +13,14 @@ const updateLocalStorage = () => {
 
 renderTodo();
 
+inputElement.addEventListener('keyup', function(e){
+    var key = e.which || e.keyCode;
+    if (key == 13) { // codigo da tecla enter
+      addTodoInArray()
+    //   console.log("clicou enter");
+    }
+});
+
 buttonElement.onclick = addTodoInArray;
 buttonErase.onclick = removeAll;
 buttonRemove.onclick = removeSelected;
