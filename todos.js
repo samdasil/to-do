@@ -1,20 +1,25 @@
 var listElement = document.querySelector('#app ul');
 var inputElement = document.querySelector('#app .addTodo input');
 var buttonElement = document.querySelector('#app .addTodo button');
+var buttonErase = document.querySelector('#erase');
+var buttonRemove = document.querySelector('#remove-selected');
 
-var todos = [
-    'Dormir',
-    'Correr',
-    'Andar'
-];
+const localItems = JSON.parse(localStorage.getItem('ListItems'))
+let ListItems = localStorage.getItem('ListItems') !== null ? localItems : []
+
+const updateLocalStorage = () => {
+    localStorage.setItem('ListItems', JSON.stringify(ListItems))
+}
 
 renderTodo();
 
 buttonElement.onclick = addTodoInArray;
+buttonErase.onclick = removeAll;
+buttonRemove.onclick = removeSelected;
 
 function renderTodo(){    
     
-    for( todo of todos ){
+    for( todo of ListItems ){
 
         createToDoItem(todo);
 
@@ -26,11 +31,13 @@ function addTodoInArray(){
 
     var todoText = inputElement.value;
 
-    todos.push(todoText);
+    ListItems.push(todoText);
 
     inputElement.value = '';
 
-    createToDoItem(todos[todos.length -1])
+    createToDoItem(ListItems[ListItems.length -1])
+
+    updateLocalStorage()
 
 }
 
@@ -51,5 +58,16 @@ function createToDoItem(objToDo){
     pElement.appendChild(todoText);
     listElement.appendChild(todoElement);
 
+    
     return listElement;
+}
+
+function removeAll(){
+    ListItems = []
+    localStorage.setItem('ListItems',"[]")
+    listElement.innerHTML = ''
+}
+
+function removeSelected(){
+    console.log("listElement",listElement);
 }
