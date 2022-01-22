@@ -135,10 +135,16 @@ body
     letter-spacing: 1px;
     text-transform: capitalize;
     margin: 0;
+    width: 80%;
 }
 
 .list .addTodo input:focus-visible{
     border-color: #cecece;
+}
+
+.list .addTodo input:focus{
+    box-shadow: 0 0 0 0;
+    outline: 0;
 }
 
 .list .addTodo button
