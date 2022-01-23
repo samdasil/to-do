@@ -177,7 +177,6 @@ body
     border-radius: 50%;
     border: 1px solid #fff;
     background: rgb(231 199 110);
-    margin-right: 10px;
 }
 
 .footer .options{
@@ -190,6 +189,13 @@ body
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+}
+
+
+@media screen and (min-width: 720px){
+    .footer .options .option-item{
+        justify-content: flex-end;
+    }
 }
 
 .footer .options .option-item p{
